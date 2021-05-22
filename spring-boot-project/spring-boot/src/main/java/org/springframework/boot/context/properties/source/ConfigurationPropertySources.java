@@ -82,8 +82,8 @@ public final class ConfigurationPropertySources {
 			sources.addFirst(
 					// 创建配置属性源属性源
 					new ConfigurationPropertySourcesPropertySource(ATTACHED_PROPERTY_SOURCE_NAME,
-					// 创建Spring配置属性源
-					new SpringConfigurationPropertySources(sources)));
+							// 创建Spring配置属性源
+							new SpringConfigurationPropertySources(sources)));
 		}
 	}
 

@@ -107,9 +107,9 @@ public class AutoConfigurationImportSelector implements DeferredImportSelector, 
 	}
 
 	/**
-	 * 重要：延迟导入逻辑会调用此方法
-	 * Return the {@link AutoConfigurationEntry} based on the {@link AnnotationMetadata}
-	 * of the importing {@link Configuration @Configuration} class.
+	 * 重要：延迟导入逻辑会调用此方法 Return the {@link AutoConfigurationEntry} based on the
+	 * {@link AnnotationMetadata} of the importing {@link Configuration @Configuration}
+	 * class.
 	 * @param autoConfigurationMetadata the auto-configuration metadata
 	 * @param annotationMetadata the annotation metadata of the configuration class
 	 * @return the auto-configurations that should be imported
@@ -206,7 +206,7 @@ public class AutoConfigurationImportSelector implements DeferredImportSelector, 
 	private void checkExcludedClasses(List<String> configurations, Set<String> exclusions) {
 		List<String> invalidExcludes = new ArrayList<>(exclusions.size());
 		for (String exclusion : exclusions) {
-			// 支持exclusion类  且 配置类集合不包含支持exclusion类
+			// 支持exclusion类 且 配置类集合不包含支持exclusion类
 			if (ClassUtils.isPresent(exclusion, getClass().getClassLoader()) && !configurations.contains(exclusion)) {
 				// 将 支持exclusion类 添加到 无效排除
 				invalidExcludes.add(exclusion);
@@ -394,8 +394,10 @@ public class AutoConfigurationImportSelector implements DeferredImportSelector, 
 
 	private static class AutoConfigurationGroup
 			implements DeferredImportSelector.Group, BeanClassLoaderAware, BeanFactoryAware, ResourceLoaderAware {
+
 		// 导入类的注解信息
 		private final Map<String, AnnotationMetadata> entries = new LinkedHashMap<>();
+
 		// 自动配置类实例属性集合
 		private final List<AutoConfigurationEntry> autoConfigurationEntries = new ArrayList<>();
 
@@ -495,8 +497,10 @@ public class AutoConfigurationImportSelector implements DeferredImportSelector, 
 	}
 
 	protected static class AutoConfigurationEntry {
+
 		// 配置类集合
 		private final List<String> configurations;
+
 		// 排除类集合
 		private final Set<String> exclusions;
 

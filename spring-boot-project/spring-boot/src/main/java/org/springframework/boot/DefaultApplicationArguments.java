@@ -35,6 +35,7 @@ public class DefaultApplicationArguments implements ApplicationArguments {
 
 	// 资源
 	private final Source source;
+
 	// 参数
 	private final String[] args;
 

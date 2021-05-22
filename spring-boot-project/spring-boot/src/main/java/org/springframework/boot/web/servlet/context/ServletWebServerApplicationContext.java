@@ -102,8 +102,10 @@ public class ServletWebServerApplicationContext extends GenericWebApplicationCon
 	 * {@link ServletRegistrationBean} or a different bean name.
 	 */
 	public static final String DISPATCHER_SERVLET_NAME = "dispatcherServlet";
+
 	// Web服务
 	private volatile WebServer webServer;
+
 	// Servlet配置
 	private ServletConfig servletConfig;
 

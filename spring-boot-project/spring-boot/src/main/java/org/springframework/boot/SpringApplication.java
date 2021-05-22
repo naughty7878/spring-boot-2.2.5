@@ -194,48 +194,67 @@ public class SpringApplication {
 	private static final String SYSTEM_PROPERTY_JAVA_AWT_HEADLESS = "java.awt.headless";
 
 	private static final Log logger = LogFactory.getLog(SpringApplication.class);
+
 	// 主资源Class集合
 	private Set<Class<?>> primarySources;
 
 	private Set<String> sources = new LinkedHashSet<>();
 
 	private Class<?> mainApplicationClass;
+
 	// banner模式，默认控制台输出
 	private Banner.Mode bannerMode = Banner.Mode.CONSOLE;
+
 	// 是否记录启动信息日志
 	private boolean logStartupInfo = true;
+
 	// 添加命令行属性
 	private boolean addCommandLineProperties = true;
+
 	// 添加转化服务
 	private boolean addConversionService = true;
+
 	// 横幅
 	private Banner banner;
+
 	// 资源加载器
 	private ResourceLoader resourceLoader;
+
 	// Bean名称生成器
 	private BeanNameGenerator beanNameGenerator;
+
 	// 可配置的环境
 	private ConfigurableEnvironment environment;
+
 	// 应用上下文类Class
 	private Class<? extends ConfigurableApplicationContext> applicationContextClass;
+
 	// web应用类型
 	private WebApplicationType webApplicationType;
 
 	private boolean headless = true;
+
 	// 注册器关闭勾子标识
 	private boolean registerShutdownHook = true;
+
 	// 应用上下文初始化器
 	private List<ApplicationContextInitializer<?>> initializers;
+
 	// 应用监听器集合
 	private List<ApplicationListener<?>> listeners;
+
 	// 默认属性集合
 	private Map<String, Object> defaultProperties;
+
 	// 其他配置文件
 	private Set<String> additionalProfiles = new HashSet<>();
+
 	// 允许bean定义覆盖，默认为false
 	private boolean allowBeanDefinitionOverriding;
+
 	// 是否自定义环境
 	private boolean isCustomEnvironment = false;
+
 	// 懒加载初始化，默认为false
 	private boolean lazyInitialization = false;
 
@@ -274,10 +293,26 @@ public class SpringApplication {
 		// 从类路径推断Web应用类型
 		this.webApplicationType = WebApplicationType.deduceFromClasspath();
 		// 从（META-INF/spring.factories中）获取Spring工厂实例 应用上下文初始化器集合 7个
-		// [org.springframework.boot.context.config.DelegatingApplicationContextInitializer@1efee8e7, org.springframework.boot.autoconfigure.SharedMetadataReaderFactoryContextInitializer@517cd4b, org.springframework.boot.context.ContextIdApplicationContextInitializer@1442d7b5, org.springframework.boot.context.ConfigurationWarningsApplicationContextInitializer@58a90037, org.springframework.boot.rsocket.context.RSocketPortInfoApplicationContextInitializer@1ee807c6, org.springframework.boot.web.context.ServerPortInfoApplicationContextInitializer@76a4d6c, org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener@6cc7b4de]
+		// [org.springframework.boot.context.config.DelegatingApplicationContextInitializer@1efee8e7,
+		// org.springframework.boot.autoconfigure.SharedMetadataReaderFactoryContextInitializer@517cd4b,
+		// org.springframework.boot.context.ContextIdApplicationContextInitializer@1442d7b5,
+		// org.springframework.boot.context.ConfigurationWarningsApplicationContextInitializer@58a90037,
+		// org.springframework.boot.rsocket.context.RSocketPortInfoApplicationContextInitializer@1ee807c6,
+		// org.springframework.boot.web.context.ServerPortInfoApplicationContextInitializer@76a4d6c,
+		// org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener@6cc7b4de]
 		setInitializers((Collection) getSpringFactoriesInstances(ApplicationContextInitializer.class));
 		// 从（META-INF/spring.factories中）获取Spring工厂实例 应用监听器集合 11个
-		// [org.springframework.boot.cloud.CloudFoundryVcapEnvironmentPostProcessor@37e547da, org.springframework.boot.context.config.ConfigFileApplicationListener@2b6856dd, org.springframework.boot.context.config.AnsiOutputApplicationListener@5db45159, org.springframework.boot.context.logging.LoggingApplicationListener@6107227e, org.springframework.boot.context.logging.ClasspathLoggingApplicationListener@7c417213, org.springframework.boot.autoconfigure.BackgroundPreinitializer@15761df8, org.springframework.boot.context.config.DelegatingApplicationListener@6ab7a896, org.springframework.boot.builder.ParentContextCloserApplicationListener@327b636c, org.springframework.boot.ClearCachesApplicationListener@45dd4eda, org.springframework.boot.context.FileEncodingApplicationListener@60611244, org.springframework.boot.liquibase.LiquibaseServiceLocatorApplicationListener@3745e5c6]
+		// [org.springframework.boot.cloud.CloudFoundryVcapEnvironmentPostProcessor@37e547da,
+		// org.springframework.boot.context.config.ConfigFileApplicationListener@2b6856dd,
+		// org.springframework.boot.context.config.AnsiOutputApplicationListener@5db45159,
+		// org.springframework.boot.context.logging.LoggingApplicationListener@6107227e,
+		// org.springframework.boot.context.logging.ClasspathLoggingApplicationListener@7c417213,
+		// org.springframework.boot.autoconfigure.BackgroundPreinitializer@15761df8,
+		// org.springframework.boot.context.config.DelegatingApplicationListener@6ab7a896,
+		// org.springframework.boot.builder.ParentContextCloserApplicationListener@327b636c,
+		// org.springframework.boot.ClearCachesApplicationListener@45dd4eda,
+		// org.springframework.boot.context.FileEncodingApplicationListener@60611244,
+		// org.springframework.boot.liquibase.LiquibaseServiceLocatorApplicationListener@3745e5c6]
 		setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));
 		// 推断主应用的类Class
 		this.mainApplicationClass = deduceMainApplicationClass();

@@ -43,6 +43,7 @@ class SpringApplicationBannerPrinter {
 	static final String DEFAULT_BANNER_LOCATION = "banner.txt";
 
 	static final String[] IMAGE_EXTENSION = { "gif", "jpg", "png" };
+
 	// 默认Banner
 	private static final Banner DEFAULT_BANNER = new SpringBootBanner();
 
